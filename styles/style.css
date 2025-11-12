@@ -1,0 +1,387 @@
+:root {
+    --black: #252525;
+    --black--blur: rgba(37, 37, 37, 0.42);
+    --white: #fbfbfb;
+
+    --purple: #08075b
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lucida Console", "Lucida Sans", serif;
+    color: var(--white);
+    scroll-behavior: smooth;
+}
+
+/* removendo inputs para estilização */
+input[type='radio'],
+input[type='checkbox'] {
+    display: none;
+}
+
+#page-top {
+
+}
+
+
+.d-flex {
+    display: flex;
+}
+
+.d-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.d-between {
+    justify-content: space-between;
+}
+
+body {
+    background: var(--purple);
+}
+
+/*
+    Começando a estilização do header
+*/
+header {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    background: linear-gradient(to bottom, var(--black), var(--purple));
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+header a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    transition: all .4s;
+    border-bottom: 3px solid transparent;
+}
+
+/*Animação quando o usuário passa o mouse sobre o header*/
+header a:hover {
+    transform: scale(1.05);
+    border-bottom: 3px solid white;
+}
+
+/*
+    Estilização das sections
+*/
+section {
+    align-items: center;
+    width: 100%;
+    min-height: 700px;
+    padding: 0 5%;
+}
+
+/*
+    Estilizando o banner
+*/
+.banner {
+    padding-top: 80px;
+    background-image: url("../media/aditya-chinchure-ZhQCZjr9fHo-unsplash.jpg");
+    box-shadow: inset 0 0 20000px 2000px rgba(0, 0, 0, 0.86);
+
+    gap: 30px
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-family: "Mona Sans Thin";
+    margin: 10% 0;
+}
+
+.banner p {
+    font-size: 1.5rem;
+}
+
+/*
+    styling all section's titles
+*/
+h2 {
+    font-size: 2.5rem;
+}
+
+/*
+    starting the styling of features section
+*/
+.features {
+    margin-top: 20px;
+    align-items: center;
+}
+
+.features h2 {
+    margin: 5% 0;
+}
+
+/* starting the animation for the menu in mobile*/
+.label-side-menu{
+    display: none;
+    text-align: center;
+    font-size: 2rem;
+    user-select: none;
+    transition:all .4s;
+    rotate: 45deg;
+    border-radius: 200px;
+    background: var(--black);
+}
+
+#input-side-menu:checked ~ .container-inputs nav .label-side-menu{
+    rotate: 0deg;
+}
+
+#input-side-menu:checked ~ .container-inputs nav{
+    max-height: 50px;
+    overflow: hidden;
+}
+
+.features nav {
+    gap: 30px;
+    margin-bottom: 20px;
+    max-height: 500px;
+}
+
+.label-features {
+    font-size: 1.2rem;
+    user-select: none;
+    cursor: pointer;
+    transition: all .4s;
+    border: 3px solid transparent;
+    border-radius: 20px;
+    padding: 20px;
+    display: grid;
+    place-items: center;
+}
+
+.label-features:hover {
+    border-bottom: 1px solid var(--white);
+}
+
+/* animating when the input is checked they will be highlighted*/
+#input-feature-versions:checked ~ .container-inputs nav .label-features:nth-child(2),
+#input-feature-highscore:checked ~ .container-inputs nav .label-features:nth-child(3),
+#input-feature-user:checked ~ .container-inputs nav .label-features:nth-child(4),
+#input-feature-ranking:checked ~ .container-inputs nav .label-features:nth-child(5) {
+    border: 3px solid white;
+}
+
+/* animating when the input its content will be shown*/
+#input-feature-versions:checked ~ .container-feature:nth-child(8),
+#input-feature-highscore:checked ~ .container-feature:nth-child(9),
+#input-feature-user:checked ~ .container-feature:nth-child(10),
+#input-feature-ranking:checked ~ .container-feature:nth-child(11) {
+    display: flex;
+}
+
+.container-feature {
+    display: none;
+    width: 90%;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.container-feature > div {
+    max-width: 45%;
+    overflow: hidden;
+}
+
+.container-feature > div > img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+.container-version p {
+    line-height: 1.2rem;
+}
+
+/* initiating the styling of the about section*/
+.container-about {
+    padding: 5% 5%;
+    position: relative;
+
+    overflow: hidden;
+
+    background: rgba(21, 21, 21, 0.72);
+}
+
+.container-about h2 {
+    margin: 5% 0;
+}
+
+.container-about-topic {
+    max-width: 60%;
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+.container-about-topic strong {
+    font-size: 2rem;
+}
+
+/* efeitos de quadrado no background*/
+.about-background-effect {
+    width: 500px;
+    height: 400px;
+    background: var(--black--blur);
+    border-radius: 20px;
+    z-index: -1;
+    position: absolute;
+}
+
+.arrow{
+    font-size: 2rem;
+    user-select: none;
+    transition: all .4s;
+}
+.arrow:hover{
+    animation: arrowDown 2s infinite ease-in ;
+    transform:scale(1.1);
+}
+
+@keyframes arrowDown {
+    0%{transform:scale(1.1);}
+    40%{transform:translateY(0px)}
+    50%{transform:translateY(10px)}
+    60%{transform:translateY(0)}
+    80%{transform:translateY(10px)}
+    90%{transform:translateY(0)}
+    100%{transform:scale(1.1)}
+}
+
+.effect-right {
+    top: 5%;
+    left: 85%;
+}
+
+.effect-left{
+    bottom: 5%;
+    right: 85%;
+}
+
+/*
+   styling the roadmap section
+*/
+.roadmap{
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.roadmap .effect-right {
+    top: 50%;
+    left: 85%;
+    rotate: 45deg;
+}
+
+.roadmap .effect-left{
+    top: 5%;
+    right: 85%;
+
+    rotate: 45deg;
+}
+
+.roadmap h2{
+    margin:20px;
+}
+
+.title{
+    align-items: center;
+}
+
+.title h4{
+    padding: 30px;
+    border-radius: 20px;
+    background: var(--black);
+    border: 2px solid var(--white);
+    min-width: 200px;
+    text-align: center;
+}
+
+
+
+.roadmap .label-features{
+    display: none;
+}
+
+.container-arrows{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+}
+.container-arrows p{
+    width: 100px;
+    text-align: center;
+}
+.container-arrows span{
+    font-size: 3rem;
+}
+
+.title-center{
+    display: grid;
+    place-items: center;
+
+    padding: 40px;
+    border-radius: 20px;
+    background: var(--black);
+    border: 2px solid var(--white);
+}
+
+.container-arrows-horizontal{
+    align-items: center;
+}
+
+
+/*
+    starting the footer styling
+*/
+footer{
+    background: var(--black);
+
+    justify-content: center;
+    align-items: center;
+
+    min-height: 40px;
+}
+@media screen and (max-width: 920px) {
+    .container-feature{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .container-feature > div{
+        max-width: 105%;
+    }
+    nav{
+        flex-direction: column;
+    }
+
+    .container-about-topic{
+        max-width: none;
+    }
+
+    .label-side-menu{
+        display: inline;
+        margin:0 auto;
+        aspect-ratio: 1/1;
+
+        padding:10px;
+    }
+    .container-about{
+        margin:30px 0;
+    }
+    .title-horizontal{
+        display: none;
+    }
+
+}
